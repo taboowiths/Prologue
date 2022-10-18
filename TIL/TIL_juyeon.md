@@ -1,4 +1,4 @@
-## 깃허브 블로그 만들기
+## 깃허브 블로그 만들기(10.17)
 
 
 
@@ -105,3 +105,44 @@ bundle exec jekyll serve
 bundle add webrick
 ```
 
+
+
+## Gatsby를 이용하여 블로그 만들기(10.18)
+
+
+
+#### 1. Gatsby 사용 설정
+
+```
+sudo npm install -g gatsby-cli
+```
+
+- Gatsby CLI는 Webpack, React.js, React-route 등을 이미 포함해서 간단하게 이용할 수 있게 해줌
+
+
+
+```
+gatsby new gatsby-advanced-starter https://github.com/Vagr9K/gatsby-advanced-starter
+```
+
+- 사용할 gatsby 테마 설치
+  - 리액트 버전때문에 node_modules 설치에서 오류 발생
+  - `npm install --force`로 따로 설치해줌
+
+
+
+```
+gatsby develop
+```
+
+- 로컬 development server 시작
+  - localhost:8000으로 사이트 접속 가능
+
+
+
+---------
+
+- gatsby 테마를 잘 선택해서 우리 프로젝트로 가져와야 할 듯
+  - 내가 선택한게 gatsby-config.js 설정파일이 조금 달랐음
+  - 게시글 작성 폴더도 찾기가 어려움
+- npm install 을 오류 안나게 어떻게 설정할지 고민해봐야 할 듯
