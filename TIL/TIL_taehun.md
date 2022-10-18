@@ -1,4 +1,5 @@
 ## TIL
+##10-17(월)
 [https://bumikim.netlify.app/how-to-build-a-blog-using-jekyll](https://bumikim.netlify.app/how-to-build-a-blog-using-jekyll) <<< 참고한 사이트
 
 jekyll 테마 적용 + netrify를 통한 깃허브 블로그 개설
@@ -16,3 +17,43 @@ jekyll 테마 적용 + netrify를 통한 깃허브 블로그 개설
 예를들면 jekyll의 초기 코드를 생성해주는 jekyll new . 같은 명령어를 어떤 버튼을 눌러서 사용자 cmd에서 실행시켜주는것.
 
 우리 웹페이지내 에디터에서 작성한 내용을 포스팅 버튼을 눌렀을 때 사용자 레포지토리에 잘 넘어가서 사용자 깃허브 블로그가 갱신시키는 것.
+
+##10-17(화)
+### [Get a repository content](https://docs.github.com/en/rest/repos/contents#get-repository-content) << 제일 맞는 api
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a0017acb-be61-459a-a657-23a74161ccb5/Untitled.png)
+
+- 레포지내 원하는 경로의 파일들을 가져오는 api. md 파일의 경우 sha로 인코딩해서 값이 넘어온다.
+- 테스트화면 → test폴더내에 [1](http://1.md),2,3 md파일을 만들어서 테스트해봤다. 해당 폴더내에 존재하는 파일들이 다 넘어오는 것을 확인할 수 있었다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ec109b38-a1ec-493c-910f-58666432881f/Untitled.png)
+
+### [Get a repository](https://docs.github.com/en/rest/repos/repos#get-a-repository)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7318bcac-0c0d-41e0-8cd4-5722e4057b78/Untitled.png)
+
+- 레포지토리를 접근해서 가져오는 api가 존재하는 것 같은데 response가 거의 다 url로 이루어져있다. postman으로 테스트 해봐야 알 듯.
+- 포스트맨 테스트 : 공식문서 response랑 다를거없이 url만 보내준다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3230e29a-5dd0-47b1-b805-db833caffc5b/Untitled.png)
+
+### [Get a project](https://docs.github.com/en/rest/projects/projects#get-a-project)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c737e133-33dc-4394-accd-4ffb97fb1468/Untitled.png)
+
+- 레포지토리가 아닌 프로젝트를 가져오는 api. 테스트 해보려고 기록
+
+## 밑에 두개는 README만 읽어와짐.. 이름 바뀌면 안읽어짐
+
+### [Get a repository README](https://docs.github.com/en/rest/repos/contents#get-a-repository-readme)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/831d7fb5-3cc8-461b-9258-22df9ce810b6/Untitled.png)
+
+- 레포지토리 내 README를 가져오는 api. readme 파일 읽어오기 가능
+- 테스트 결과 인코딩한 값으로 넘어오긴해도 디코딩하면 잘나옴
+
+### [Get a repository README for a directory](https://docs.github.com/en/rest/repos/contents#get-a-repository-readme-for-a-directory)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0d058231-cf8a-4cd8-9d52-bad55ce7c93f/Untitled.png)
+
+- 레포지 내 폴더마다 README를 가져오는 api.
