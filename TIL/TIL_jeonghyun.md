@@ -116,3 +116,9 @@ Netlify를 배포 도구로 정하고 실제로 적용하고 배포를 해보니
 [https://github.com/netlify/netlify-cms](https://github.com/netlify/netlify-cms)
 
 - 여기다 기능 추가
+
+## 10.18
+
+- 와이어프레임 수정
+
+
