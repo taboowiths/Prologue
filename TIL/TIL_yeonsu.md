@@ -1,6 +1,6 @@
 ## 📅 2022.10.17
 
-#### 💻 ***Gatsby 블로그 제작 과정***
+#### 💻 **_Gatsby 블로그 제작 과정_**
 
 **참고 블로그 :** https://velog.io/@gparkkii/build-gatsby-blog
 
@@ -10,14 +10,12 @@ https://spriteye.me/posts/2019/09/gatsby-getting-started/
 
 [커스텀 도메인 적용하기](https://woojeongmin.com/2021/gatsby-blog/0-blog-deploy-custom-domain/)
 
-------
+---
 
 #### 1. 깃 레포지토리 생성
 
 - **{userName}.github.io 이름으로 깃 레포 생성**
 - **public 으로 설정**
-
-
 
 #### 2. Gatsby 설치
 
@@ -25,8 +23,6 @@ https://spriteye.me/posts/2019/09/gatsby-getting-started/
 # Gatsby 설치
 npm install -g gatsby-cli
 ```
-
-
 
 #### 3. Gatsby 프로젝트 만들기
 
@@ -44,8 +40,6 @@ cd myblog
 gatsby develop
 ```
 
-
-
 #### 4. Git Repository에 Gatsby 프로젝트 push
 
 ```bash
@@ -59,8 +53,6 @@ git commit -m "Init Gastby Blog"
 git remote add origin <https://github.com/${Github_ID}/${Git_Repository_Name}.git>
 git push -u origin master
 ```
-
-
 
 #### 5. **블로그 빌드, 배포하기**
 
@@ -95,6 +87,8 @@ git push -u origin master
 
   ![image](https://user-images.githubusercontent.com/83412032/196413183-154f9a36-c26d-4529-8fcb-e9df5135f159.png)
 
-- [ ] 와이어 프레임 디테일 수정(개인)
+- [x] 와이어 프레임 디테일 수정(개인)
+
+  ![image](https://user-images.githubusercontent.com/83412032/196521607-73a38692-366a-407a-9eca-ac43501d816e.png)
 
 - [ ] npm 없이 git 배포 확인 및 정리
