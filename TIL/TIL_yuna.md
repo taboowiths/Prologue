@@ -1,7 +1,7 @@
 ## 목차
 
 1. [Hugo](#hugo)
-2. [Hugo 설치](#hugo-설치)
+2. [Gatsby](#gatsby)
 
 # Hugo
 
@@ -12,9 +12,7 @@
 
 ---
 
-# Hugo 설치
-
-- mac과 windows는 설치방법이 다른거 같음. windows는 다른 분이 하실 거 같아 mac으로 함.
+# 설치
 
 ## 1. Install Hugo
 
@@ -155,3 +153,133 @@ $ ./deploy.sh
 ```
 
 ---
+
+# Gatsby
+
+# 설치
+
+### 1. Install Gatsby
+
+- ✅ homebrew 설치
+- ✅ nodejs 설치
+
+```bash
+$ brew install node
+```
+
+- ✅ git 설치
+- ⚠️ 전역에 gatsby 설치
+
+```bash
+$ npm install -g gatsby-cli
+```
+
+permission denied 에러 발생
+
+```bash
+$ sudo npm install -g gatsby-cli --unsafe-perm=true
+```
+
+### 2. Create new Gatsby project
+
+```bash
+# gatsby new <폴더명> <스타터-깃허브-주소>
+$ gatsby new myblog https://github.com/gatsbyjs/gatsby-starter-blog
+
+$ cd myblog
+$ gatsby develop
+```
+
+[http://localhost:**8000**/](http://localhost:8000/) 으로 접속
+
+- 프로젝트 구조
+
+```
+# gatsby-starter-blog
+├── node_modules
+├── content
+├── src
+│   ├── components
+│   ├── images
+│   ├── templates
+│   └── pages
+├── pakage-browser.json
+├── gatsby-config.js: 게츠비 사이트 기본구성파일, 사이트의 기본정보(메타정보), 플러그인등 설정가능
+├── pakage-node.json
+├── pakage-ssr.json
+├── LICENSE: 기본 MIT
+├── pakage-lock.json
+├── pakage.json
+├── static
+└── README.md
+```
+
+```
+# gatsby-starter-hello-world
+├── node_modules
+├── public
+├── src
+│   └── page
+├── gatsby-config.js
+├── LICENSE: 기본 MIT
+├── pakage-lock.json
+├── pakage.json
+├── static
+└── README.md
+```
+
+### 3. Set Gatsby Configuration
+
+- gatsby-config.js
+
+```jsx
+module.exports = {
+    siteMetadata: {
+    title: `una's blog`,
+    author: {
+      name: `권유나`,
+      summary: `👩🏻‍💻`,
+    },
+    description: `웹 개발하는 중..🔥`,
+    siteUrl: `https://Kuuuna98.github.io/`,
+    social: {
+      github: `Kuuuna98`,
+      instagram: ``,
+      twitter: ``,
+    },
+  },
+    ...
+}
+```
+
+- bio 컴포넌트 변경: src/components/bio.js
+
+### 4. Deploy to GitHub pages
+
+- gh-pages 모듈 설치
+- gh-pages 모듈을 통해 원하는 branch에 Github pages를 배포할 수 있음
+
+```bash
+$ npm install gh-pages --save-dev
+```
+
+- package.json
+
+```json
+# 빌드한 후 deploy 브랜치에 푸시
+# 죽, main 브랜치가 아닌 deploy 브랜치에 빌드된 파일 푸시됨
+"scripts": {
+    ...
+    "deploy": "gatsby build && gh-pages -d public -b deploy",
+    ...
+}
+```
+
+- Github pages 배포
+
+```bash
+$ npm run deploy
+```
+
+- [ Github Repository - Settings - Pages ]
+- source branch를 deploy로 변경
