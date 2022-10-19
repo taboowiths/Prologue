@@ -21,3 +21,11 @@ name(Required) <br>
 [GET]https://api.github.com/users/{USERNAME}/repos
 
 퍼블릭 저장소만을 가져오기 때문에 토큰값 필요 X
+
+---
+
+## **Git action을 활용한 블로그 자동 배포**
+
+1. access token 생성 <br>
+2. repository secrets 생성
+3. work flows 생성
