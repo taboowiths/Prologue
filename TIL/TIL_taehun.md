@@ -57,3 +57,11 @@ jekyll 테마 적용 + netrify를 통한 깃허브 블로그 개설
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0d058231-cf8a-4cd8-9d52-bad55ce7c93f/Untitled.png)
 
 - 레포지 내 폴더마다 README를 가져오는 api.
+
+##10-18(수)
+### [Get a repository content](https://docs.github.com/en/rest/repos/contents#get-repository-content)
+어제 괜찮다고 생각한 레포 내 컨텐츠를 가져오는 api가 실제로 사용해보니, 컨텐츠 내용을 볼 수 없는 문제가 있었다.
+해당 api를 이용하여 폴더 내 컨텐츠 개수와 경로를 파악하고 이를 이용하여, 한개 씩 뽑아내야할거 같다.
+
+### 깃 로그인 연동
+깃 로그인연동을 진행중인데 간단하게 생각했는데, 생각했던만큼 쉽지 않았다. 프론트 단에서 바로 연동을 진행할까 했는데, 백을 거치는 과정을 권장해서 알아보는중이다.
