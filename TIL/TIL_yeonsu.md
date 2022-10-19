@@ -92,3 +92,11 @@ git push -u origin master
   ![image](https://user-images.githubusercontent.com/83412032/196521607-73a38692-366a-407a-9eca-ac43501d816e.png)
 
 - [ ] npm 없이 git 배포 확인 및 정리
+
+---
+
+## 📅 2022.10.19
+
+- [ ] 목업 디자인
+
+  ![image](https://user-images.githubusercontent.com/83412032/196616267-8ea66138-40b7-4fea-b9e7-854ac7b2aced.png)
