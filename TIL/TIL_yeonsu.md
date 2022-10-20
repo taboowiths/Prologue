@@ -97,6 +97,96 @@ git push -u origin master
 
 ## 📅 2022.10.19
 
-- [ ] 목업 디자인
+- [x] 목업 디자인
 
   ![image](https://user-images.githubusercontent.com/83412032/196616267-8ea66138-40b7-4fea-b9e7-854ac7b2aced.png)
+
+---
+
+## 📅 2022.10.20
+
+- [ ] 목업디자인
+
+- [x] Gatsby 사용 가능 테마 탐색
+
+  [Starters Library | Gatsby](https://www.gatsbyjs.com/starters)
+
+  [Jamstack Themes](https://jamstackthemes.dev/#ssg=gatsby&archetype=blog)
+
+  - md 형식(비슷한 경로)
+
+    ##### [Gatsby-Starter-Blog](https://github.com/gatsbyjs/gatsby-starter-blog)
+
+    - gatsby-dtarter-blog/content/blog/hello-world/index.md
+
+    ##### ***\*[Serial Programmer](https://github.com/sharadcodes/gatsby-theme-serial-programmer)\****
+
+    - gatsby-theme-serial-programmer/content/blog/gatsby-markdown.md
+
+    ##### [gatsby-starter-netlify-cms](https://github.com/netlify-templates/gatsby-starter-netlify-cms)
+
+    - gatsby-starter-netlify-cms/src/pages/about/inedex.md
+
+    ##### [gatsby-starter-minimal-blog](https://github.com/LekoArts/gatsby-starter-minimal-blog)
+
+    - 맞는지 모르겠음 경로 확인 재 필요
+    - gatsby-starter-minimal-blog/content/pages/about/index.md
+
+    ------
+
+    content 폴더에 내용있음
+
+    ##### [Gatsby Starter Glass](https://github.com/yinkakun/gatsby-starter-glass)
+
+    - gatsby-starter-glass/src/templates/about-template****.****js
+
+    ##### [Gatsby Advanced Blog System](https://github.com/danilowoz/gatsby-advanced-blog-system)
+
+    - gatsby-advanced-blog-system/content /blog/폴더/.md
+
+    ##### **[gatsby-starter-foundation](https://github.com/stackrole/gatsby-starter-foundation)**
+
+    - 게시글 : gatsby-starter-foundation/src/content/posts/.md
+    - 네비게이션 about : gatsby-starter-foundation/src/content/pages/about.md
+
+    ------
+
+    content 폴더에는 없지만 .md + js
+
+    ##### **[gatsby-netlifycms-starter-template](https://github.com/simarmannsingh/gatsby-netlifycms-starter-template)**
+
+    - gatsby-netlifycms-starter-template/src/pages/about/index.md
+    - gatsby-netlifycms-starter-template/src/pages/contact/thanks.js
+
+    ------
+
+  - .js 파일 형식 : 템플릿을 js로 만들고 데이터를 가져와 입히는 형식(걍 다 다름)
+
+    ##### [gatsby-starter-ghost](https://github.com/TryGhost/gatsby-starter-ghost)\*
+
+    - gatsby-starter-ghost/src/templates/index.js
+
+    ##### [gatsby-material-starter](https://github.com/Vagr9K/gatsby-material-starter)
+
+    - post게시글 : gatsby-material-starter/themes/material/src/gatsby-theme-advanced/templates/post/index.tsx
+    - about : gatsby-material-starter/themes/material/src/pages/about.tsx
+
+    ##### ***\*[starter-gatsby-blog](https://github.com/contentful/starter-gatsby-blog)\****
+
+    - starter-gatsby-blog/src/pages/blog.js
+
+    ##### ***\*[gatsby-starter-wordpress-blog](https://github.com/gatsbyjs/gatsby-starter-wordpress-blog)\****
+
+    - gatsby-starter-wordpress-blog/src/templates/blog-post.js
+
+    ### **[gatsby-starter-hygraph-blog](https://github.com/hygraph/gatsby-starter-hygraph-blog)**
+
+    - gatsby-starter-hygraph-blog/src/templates/blog-post.js
+
+      
+
+  <포토폴리오>
+
+  ##### **[gatsby-starter-portfolio-cara](https://github.com/LekoArts/gatsby-starter-portfolio-cara)**
+
+  - gatsby-starter-portfolio-cara/src/@lekoarts/gatsby-theme-cara/sections/about.mdx
