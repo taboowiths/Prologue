@@ -129,7 +129,12 @@ Netlify를 배포 도구로 정하고 실제로 적용하고 배포를 해보니
 ## 10.20
 
 - 목업 디자인 완료
-![스크린샷 2022-10-20.png])(http://drive.google.com/uc?export=view&id=13yQtBty6qxs3YCwi248oSb_QrgJR41-O)
+![스크린샷 2022-10-20.png](http://drive.google.com/uc?export=view&id=13yQtBty6qxs3YCwi248oSb_QrgJR41-O)
+
+## 10.21
+
+- 컴포넌트 리스트 작성
+- 설문조사지 작성
 
 
 
