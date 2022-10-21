@@ -3,6 +3,7 @@
 1. [Hugo](#hugo)
 2. [Gatsby](#gatsby)
 3. [GitHub REST API TEST](#github-rest-api-test)
+4. [Base64 encoding & decoding](#base64-encoding-decoding)
 
 # Hugo
 
@@ -396,3 +397,107 @@ $ npm run deploy
 ## 🔗 참고
 
 [1] [github api + postman 이용해 txt 파일 업로드](https://www.youtube.com/watch?v=8Wzr59g4WQk)
+
+# Base64 encoding decoding
+
+# Javascript
+
+### 1. btoa() ❌
+
+- 한글 깨짐
+
+```jsx
+// window.btoa(text)
+global.btoa(text);
+
+// window.atob(encodedText)
+global.atob(encodedText);
+```
+
+### 2. encodeURIComponent() 🔺
+
+```jsx
+// window.btoa(~~unescape~~(encodeURIComponent(example)))
+global.btoa(~~unescape~~(encodeURIComponent(example)))
+
+// decodeURIComponent(~~escape~~(window.atob(encodedText)))
+decodeURIComponent(~~escape~~(global.atob(encodedText)))
+```
+
+- 원하는 결과가 나오지만 코드상에서 취소선 생김
+
+- unescape, escape를 지우고 인코딩/디코딩하는 경우 ❌
+
+```jsx
+// window.btoa(encodeURIComponent(text))
+global.btoa(encodeURIComponent(text));
+
+// decodeURIComponent(window.atob(encodedText))
+decodeURIComponent(global.atob(encodedText));
+```
+
+- unescape, escape를 지우면 다르게 인코딩됨
+- github api로 내용을 넣으면 제대로 디코딩되지 않음
+
+### 3. [opensource] encode() ⭕
+
+- 오픈소스를 사용해 인코딩/디코딩하기
+
+[https://github.com/dankogai/js-base64](https://github.com/dankogai/js-base64)
+
+```bash
+$ npm install --save js-base64
+```
+
+```jsx
+const { Base64 } = require("js-base64");
+Base64.encode(text);
+Base64.decode(encodedText);
+```
+
+- License
+  - [BSD-3-Clause license](https://github.com/dankogai/js-base64/blob/main/LICENSE.md)
+
+# Java ⭕
+
+```java
+import java.io.UnsupportedEncodingException;
+import java.util.Base64;
+import java.util.Base64.Decoder;
+import java.util.Base64.Encoder;
+
+public class test {
+
+    public static void main(String[] args) throws UnsupportedEncodingException {
+
+        String target = "# TEST\n" +
+                "\n" +
+                "- branch변경 시 md파일 업로드 확인";
+        byte[] targetBytes = target.getBytes("UTF-8");
+
+        // Base64 인코딩
+        Encoder encoder = Base64.getEncoder();
+
+        // 1. Encoder#encode(byte[] src) :: 바이트배열로 반환
+        byte[] encodedBytes = encoder.encode(targetBytes);
+        System.out.println(new String(encodedBytes));
+
+        // 2. Encoder#encodeToString(byte[] src) :: 문자열로 반환
+        String encodedString = encoder.encodeToString(targetBytes);
+        System.out.println(encodedString);
+
+        // Base64 디코딩
+        Decoder decoder = Base64.getDecoder();
+
+        // 1. Decoder#decode(bytes[] src)
+        byte[] decodedBytes1 = decoder.decode(encodedBytes);
+        System.out.println(new String(decodedBytes1, "UTF-8"));
+
+        // 2. Decoder#decode(String src)
+        byte[] decodedBytes2 = decoder.decode(encodedString);
+        System.out.println(new String(decodedBytes2, "UTF-8"));
+
+    }
+
+}
+```

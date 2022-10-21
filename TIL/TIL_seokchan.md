@@ -78,3 +78,33 @@ jobs:
           PUBLISH_BRANCH: deploy
           PUBLISH_DIR: ./public
 ```
+
+## **Github api 활용 구현**
+
+### **Get a repository public key**
+
+[https://docs.github.com/en/rest/actions/secrets#get-a-repository-public-key](https://docs.github.com/en/rest/actions/secrets#get-a-repository-public-key)
+
+`**GET** /repos/{owner}/{repo}/actions/secrets/public-key`
+
+Authorization: Bearer <YOUR-TOKEN>
+
+response example
+
+{<br>
+"key_id": "012345678912345678",<br>
+"key": "2Sg8iYjAxxmI2LvUXpJjkYrMxURPc8r+dB7TJyvv1234"<br>
+}
+<br>
+
+### **Create or update a repository secret**
+
+[https://docs.github.com/en/rest/actions/secrets#create-or-update-a-repository-secret](https://docs.github.com/en/rest/actions/secrets#create-or-update-a-repository-secret)
+
+**`PUT** /repos/{owner}/{repo}/actions/secrets/{secret_name}`
+
+Authorization: Bearer <YOUR-TOKEN>
+
+Body parameters
+
+**`encrypted_value` :** repository public key를 활용하여 [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) 으로 암호화된 비밀 값

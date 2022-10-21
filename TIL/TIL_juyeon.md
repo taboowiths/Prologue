@@ -171,3 +171,6 @@ gatsby develop
 - 페이지 관리
 
   ![_Prologue_페이지_관리](/uploads/777ec40ad6e73adc94d7ab18cb37bcf3/_Prologue_페이지_관리.png)
+
+## 목업 디자인 마무리 및 컴포넌트화(10.21)
+  ![image](/uploads/c3403134e7f25f6921a180429db9eb0a/image.png)
