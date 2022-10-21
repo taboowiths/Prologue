@@ -91,7 +91,7 @@ git push -u origin master
 
   ![image](https://user-images.githubusercontent.com/83412032/196521607-73a38692-366a-407a-9eca-ac43501d816e.png)
 
-- [ ] npm 없이 git 배포 확인 및 정리
+- [x] npm 없이 git 배포 확인 및 정리
 
 ---
 
@@ -105,7 +105,11 @@ git push -u origin master
 
 ## 📅 2022.10.20
 
-- [ ] 목업디자인
+- [x] 목업디자인
+
+  ![image](https://user-images.githubusercontent.com/83412032/197025803-9153f16a-bb55-4869-a4ba-5ab982642fa7.png)
+
+  ![image](https://user-images.githubusercontent.com/83412032/197026026-5664916e-2a1c-4a84-9da9-88d229629068.png)
 
 - [x] Gatsby 사용 가능 테마 탐색
 
@@ -119,7 +123,7 @@ git push -u origin master
 
     - gatsby-dtarter-blog/content/blog/hello-world/index.md
 
-    ##### ***\*[Serial Programmer](https://github.com/sharadcodes/gatsby-theme-serial-programmer)\****
+    ##### [Serial Programmer](https://github.com/sharadcodes/gatsby-theme-serial-programmer)
 
     - gatsby-theme-serial-programmer/content/blog/gatsby-markdown.md
 
@@ -162,7 +166,7 @@ git push -u origin master
 
   - .js 파일 형식 : 템플릿을 js로 만들고 데이터를 가져와 입히는 형식(걍 다 다름)
 
-    ##### [gatsby-starter-ghost](https://github.com/TryGhost/gatsby-starter-ghost)\*
+    ##### [gatsby-starter-ghost](https://github.com/TryGhost/gatsby-starter-ghost)
 
     - gatsby-starter-ghost/src/templates/index.js
 
@@ -171,15 +175,15 @@ git push -u origin master
     - post게시글 : gatsby-material-starter/themes/material/src/gatsby-theme-advanced/templates/post/index.tsx
     - about : gatsby-material-starter/themes/material/src/pages/about.tsx
 
-    ##### ***\*[starter-gatsby-blog](https://github.com/contentful/starter-gatsby-blog)\****
+    ##### [starter-gatsby-blog](https://github.com/contentful/starter-gatsby-blog)
 
     - starter-gatsby-blog/src/pages/blog.js
 
-    ##### ***\*[gatsby-starter-wordpress-blog](https://github.com/gatsbyjs/gatsby-starter-wordpress-blog)\****
+    ##### [gatsby-starter-wordpress-blog](https://github.com/gatsbyjs/gatsby-starter-wordpress-blog)
 
     - gatsby-starter-wordpress-blog/src/templates/blog-post.js
 
-    ### **[gatsby-starter-hygraph-blog](https://github.com/hygraph/gatsby-starter-hygraph-blog)**
+    ##### **[gatsby-starter-hygraph-blog](https://github.com/hygraph/gatsby-starter-hygraph-blog)**
 
     - gatsby-starter-hygraph-blog/src/templates/blog-post.js
 
@@ -190,3 +194,18 @@ git push -u origin master
   ##### **[gatsby-starter-portfolio-cara](https://github.com/LekoArts/gatsby-starter-portfolio-cara)**
 
   - gatsby-starter-portfolio-cara/src/@lekoarts/gatsby-theme-cara/sections/about.mdx
+
+---
+
+## 📅 2022.10.21
+
+- [x] 목업 디자인 마무리
+
+- [x] 컴포넌트 구조화
+
+  ![image](https://user-images.githubusercontent.com/83412032/197155883-3977af4a-a541-4237-91d6-884e3ffb706d.png)
+
+- [x] 컨설턴트 미팅
+
+---
+
