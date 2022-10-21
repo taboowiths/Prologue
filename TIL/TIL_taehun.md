@@ -18,7 +18,7 @@ jekyll 테마 적용 + netrify를 통한 깃허브 블로그 개설
 
 우리 웹페이지내 에디터에서 작성한 내용을 포스팅 버튼을 눌렀을 때 사용자 레포지토리에 잘 넘어가서 사용자 깃허브 블로그가 갱신시키는 것.
 
-##10-17(화)
+##10-18(화)
 ### [Get a repository content](https://docs.github.com/en/rest/repos/contents#get-repository-content) << 제일 맞는 api
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a0017acb-be61-459a-a657-23a74161ccb5/Untitled.png)
@@ -58,10 +58,114 @@ jekyll 테마 적용 + netrify를 통한 깃허브 블로그 개설
 
 - 레포지 내 폴더마다 README를 가져오는 api.
 
-##10-18(수)
+##10-19(수)
 ### [Get a repository content](https://docs.github.com/en/rest/repos/contents#get-repository-content)
 어제 괜찮다고 생각한 레포 내 컨텐츠를 가져오는 api가 실제로 사용해보니, 컨텐츠 내용을 볼 수 없는 문제가 있었다.
 해당 api를 이용하여 폴더 내 컨텐츠 개수와 경로를 파악하고 이를 이용하여, 한개 씩 뽑아내야할거 같다.
 
 ### 깃 로그인 연동
 깃 로그인연동을 진행중인데 간단하게 생각했는데, 생각했던만큼 쉽지 않았다. 프론트 단에서 바로 연동을 진행할까 했는데, 백을 거치는 과정을 권장해서 알아보는중이다.
+
+##10-20(목)
+<template>
+  <div>
+    <v-row v-for="item in postList" :key="item">
+      <v-col>{{ item }}</v-col>
+    </v-row>
+  </div>
+</template>
+
+<script>
+import axios from "axios";
+import { Base64 } from "js-base64";
+
+export default {
+  name: "App",
+  data() {
+    return {
+      token: "",
+      postList: [],
+    };
+  },
+  created() {},
+  mounted() {
+    if (localStorage.getItem("token")) {
+      this.token = localStorage.getItem("token");
+    }
+    this.getList();
+  },
+  methods: {
+    getList() {
+      axios({
+        method: "get",
+        //테스트라 url이라 내거로 고정임 / huni-hun < git계정 / testRepo < repo 이름 / contentes < api 양식 / post < 탐색 경로
+        url: `https://api.github.com/repos/huni-hun/testRepo/contents/post`,
+        headers: {
+          accept: "application/vnd.hithun+json",
+          Authorization: `Bearer ` + this.token,
+        },
+      }).then((res) => {
+        console.log(res);
+        for (let index = 0; index < res.data.length; index++) {
+          const path = res.data[index].path;
+          this.setItem(path, index);
+        }
+      });
+    },
+
+    setItem(path, i) {
+      axios({
+        method: "get",
+        //테스트라 url이라 내거로 고정임 / huni-hun < git계정 / testRepo < repo 이름 / contentes < api 양식
+        url: `https://api.github.com/repos/huni-hun/testRepo/contents/` + path,
+        headers: {
+          accept: "application/vnd.hithun+json",
+          Authorization: `Bearer ` + this.token,
+        },
+      }).then((res) => {
+        this.postList[i] = Base64.decode(res.data.content);
+        console.log(this.postList[i]);
+      });
+    },
+  },
+};
+</script>
+
+git api를 이용하는 테스트 페이지 생성
+
+##10-21(금)
+1. 깃허브 엑세스토큰 관리를 어디에서 하면 좋을 지
+    1. [프론트에서 관리] 깃허브와 프론트가 통신
+    2. [서버에서 관리] 서버를 거쳐서 깃허브 - 서버 - 프론트 통신
+        1. API & DB 필요
+    - **답변**
+        - 서버에서 저장하려면 자동로그인을 지원해야하고, 자동로그인을 하려면 회원가입을 해야한다.
+        - DB를 만드는게 좋지 않을까
+        - 파일업로드 기능
+            1. 사용자가 서비스를 끝내면 json 파일로 떨어짐
+            2. 속도는 느리지만, 보안측면에서는 안정적일 수 있다.
+2. 레포지토리 파일을 불러와 파싱해서 수정하는 작업을 프론트, 서버 중 어디서 진행하면 좋을지
+    - **답변**
+        - 프론트에서는 에디터 위주 / 커넥션은 백이 해주는게 맞다.
+        - 정상 동작일때는 프론트가 해도 아무문제가 없지만
+        - 만약 깃허브 서버에 문제가 생겼다면, 프론트는 원인파악을 하는데 시간이 오래걸리거나, 잘못될 수 있다.
+        - 프론트는 가능한 백만 바라보고 커넥션은 백이 하는 걸 추천
+3. DB를 최대한 안쓰는게 좋은건지
+    - **답변**
+        
+        테마끼리 전환이 자유로워서 데이터가 잘 이동이 된다면 불필요한 DB를 만들 필요는 없다.
+        
+        하지만 그 과정에서 어려움이 생긴다면 DB 만드는것도 괜찮다.
+        
+4. 사용자가 로컬에 node 설치 같은 환경세팅이 필요한데, 우리 서비스 측에서 해결해 줄 수 있는 방법이 없을지
+    1. 웹 서비스에서 사용자 로컬에 접근해서 환경셋팅을 해주고 빌드까지 시킬 수 있는지
+        - **답변**
+            - 웹에서는 불가능하다.
+            - 텍스트로 메뉴얼을 제공해주는게 좋다.
+            - 로컬 접근은 시간이 너무 많이 들거라서 비추천
+    2. 배치파일로 만들면 어떤지
+        - **답변**
+            - 윈도우는 블랙박스,,
+                1. 파워셀이랑 초콜리티를 동시에 돌린다면 오류가 날 수 있다.
+
+멘토링 진행

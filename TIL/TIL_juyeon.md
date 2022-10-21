@@ -156,3 +156,18 @@ gatsby develop
 - 게시물 관리 페이지
 
   ![게시글_목록](/uploads/f8c616142da3edea437552f777a57b8f/게시글_목록.png)
+
+
+## 목업 디자인(10.20)
+
+
+
+- 게시글 작성 페이지
+
+  ![게시글_작성](/uploads/362f5ff9332b2c23eb21a3e5b7edf724/게시글_작성.png)
+
+
+
+- 페이지 관리
+
+  ![_Prologue_페이지_관리](/uploads/777ec40ad6e73adc94d7ab18cb37bcf3/_Prologue_페이지_관리.png)
