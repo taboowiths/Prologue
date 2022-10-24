@@ -136,5 +136,13 @@ Netlify를 배포 도구로 정하고 실제로 적용하고 배포를 해보니
 - 컴포넌트 리스트 작성
 - 설문조사지 작성
 
+## 10.24 
+- Gatsby - github pages 배포
+```javascript
+    "deploy": "gatsby build && gh-pages -d public",
+```
+
+- github pages 배포
+`npm run deploy`
 
 
