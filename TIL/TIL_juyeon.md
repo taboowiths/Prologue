@@ -174,3 +174,9 @@ gatsby develop
 
 ## 목업 디자인 마무리 및 컴포넌트화(10.21)
   ![image](/uploads/c3403134e7f25f6921a180429db9eb0a/image.png)
+
+
+
+## Toast UI Editor 테스트 코드 작성(10.24)
+
+- 마크다운 에디터 테스트 코드 작성
