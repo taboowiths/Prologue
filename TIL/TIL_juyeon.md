@@ -180,3 +180,9 @@ gatsby develop
 ## Toast UI Editor 테스트 코드 작성(10.24)
 
 - 마크다운 에디터 테스트 코드 작성
+
+
+## Toast UI Editor 작성 테스트(10.25)
+
+  - 마크다운 에디터 화면에 띄우기
+    ![image](/uploads/fc84199539f9183bbd68ba0c8fbab09a/image.png)
