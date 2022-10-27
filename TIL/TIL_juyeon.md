@@ -186,3 +186,8 @@ gatsby develop
 
   - 마크다운 에디터 화면에 띄우기
     ![image](/uploads/fc84199539f9183bbd68ba0c8fbab09a/image.png)
+
+
+
+## Toast UI Editor 이미지 전송 테스트 코드 작성(10.27)
+  - 마크다운 에디터 이미지 태그 테스트 코드 작성
