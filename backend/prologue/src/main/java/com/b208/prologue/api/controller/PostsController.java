@@ -52,4 +52,5 @@ public class PostsController {
             return ResponseEntity.status(400).body(BaseResponseBody.of(400, "게시글 상세 조회에 실패하였습니다."));
         }
     }
+
 }

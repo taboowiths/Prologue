@@ -9,4 +9,5 @@ public interface PostService {
     Map<String,List<String>> getList(String accessToken, String gitId);
     GetRepoContentResponse getDetailPost(String encodedAccessToken, String githubId, String directory) throws Exception;
     GetRepoContentResponse getDetailContent(String accessToken, String githubId, String path) throws Exception;
+
 }
