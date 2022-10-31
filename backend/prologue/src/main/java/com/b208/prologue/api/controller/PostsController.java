@@ -1,5 +1,8 @@
 package com.b208.prologue.api.controller;
 
+import com.b208.prologue.api.request.ModifyDetailPostRequest;
+import com.b208.prologue.api.request.RemoveDetailPostRequest;
+import com.b208.prologue.api.request.WriteDetailPostRequest;
 import com.b208.prologue.api.response.BaseResponseBody;
 import com.b208.prologue.api.response.DetailPostResponse;
 import com.b208.prologue.api.response.PostListResponse;
@@ -29,10 +32,10 @@ public class PostsController {
             @ApiResponse(code = 200, message = "목록 조회 성공", response = PostListResponse.class),
             @ApiResponse(code = 500, message = "서버 오류", response = BaseResponseBody.class)
     })
-    public ResponseEntity<? extends BaseResponseBody> getPost(@RequestParam String accessToken, @RequestParam String githubId){
+    public ResponseEntity<? extends BaseResponseBody> getPost(@RequestParam String accessToken, @RequestParam String githubId) {
         Map<String, List<String>> result = postService.getList(accessToken, githubId);
 
-        return ResponseEntity.status(200).body(PostListResponse.of(result,200, "게시물 목록 조회 성공"));
+        return ResponseEntity.status(200).body(PostListResponse.of(result, 200, "게시물 목록 조회 성공"));
     }
 
     @GetMapping("")
@@ -46,11 +49,70 @@ public class PostsController {
 
         GetRepoContentResponse getRepoContentResponse = null;
         try {
-            getRepoContentResponse = postService.getDetailPost(accessToken,githubId,directory);
-            return ResponseEntity.status(200).body(DetailPostResponse.of(getRepoContentResponse,200, "게시글 상세 조회에 성공하였습니다."));
+            getRepoContentResponse = postService.getDetailPost(accessToken, githubId, directory);
+            return ResponseEntity.status(200).body(DetailPostResponse.of(getRepoContentResponse, 200, "게시글 상세 조회에 성공하였습니다."));
         } catch (Exception e) {
             return ResponseEntity.status(400).body(BaseResponseBody.of(400, "게시글 상세 조회에 실패하였습니다."));
         }
     }
 
+<<<<<<< HEAD
+=======
+    @PostMapping("")
+    @ApiOperation(value = "GitHub 게시글 작성", notes = "GitHub 블로그 게시글을 작성한다.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "게시글 작성 성공", response = BaseResponseBody.class),
+            @ApiResponse(code = 400, message = "게시글 작성 실패", response = BaseResponseBody.class),
+            @ApiResponse(code = 500, message = "서버 오류", response = BaseResponseBody.class)
+    })
+    public ResponseEntity<? extends BaseResponseBody> writeDetailPost(@RequestBody WriteDetailPostRequest writeDetailPostRequest) {
+
+        try {
+            postService.insertDetailPost(writeDetailPostRequest.getAccessToken(), writeDetailPostRequest.getGithubId(),
+                    writeDetailPostRequest.getContent());
+            return ResponseEntity.status(200).body(BaseResponseBody.of(200, "게시글 작성에 성공하였습니다."));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(400).body(BaseResponseBody.of(400, "게시글 작성에 실패하였습니다."));
+        }
+    }
+
+    @PutMapping("")
+    @ApiOperation(value = "GitHub 게시글 수정", notes = "GitHub 블로그 게시글을 수정한다.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "게시글 수정 성공", response = BaseResponseBody.class),
+            @ApiResponse(code = 400, message = "게시글 수정 실패", response = BaseResponseBody.class),
+            @ApiResponse(code = 500, message = "서버 오류", response = BaseResponseBody.class)
+    })
+    public ResponseEntity<? extends BaseResponseBody> modifyDetailPost(@RequestBody ModifyDetailPostRequest modifyDetailPostRequest) {
+
+        try {
+            postService.updateDetailPost(modifyDetailPostRequest.getAccessToken(), modifyDetailPostRequest.getGithubId(),
+                    modifyDetailPostRequest.getDirectory(), modifyDetailPostRequest.getContent(), modifyDetailPostRequest.getSha());
+            return ResponseEntity.status(200).body(BaseResponseBody.of(200, "게시글 수정에 성공하였습니다."));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(400).body(BaseResponseBody.of(400, "게시글 수정에 실패하였습니다."));
+        }
+    }
+
+    @DeleteMapping("")
+    @ApiOperation(value = "GitHub 게시글 삭제", notes = "GitHub 블로그 게시글을 삭제한다.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "게시글 삭제 성공", response = BaseResponseBody.class),
+            @ApiResponse(code = 400, message = "게시글 삭제 실패", response = BaseResponseBody.class),
+            @ApiResponse(code = 500, message = "서버 오류", response = BaseResponseBody.class)
+    })
+    public ResponseEntity<? extends BaseResponseBody> removeDetailPost(@RequestBody RemoveDetailPostRequest removeDetailPostRequest) {
+
+        try {
+            postService.deleteDetailPost(removeDetailPostRequest.getAccessToken(), removeDetailPostRequest.getGithubId(),
+                    removeDetailPostRequest.getDirectory(),removeDetailPostRequest.getSha());
+            return ResponseEntity.status(200).body(BaseResponseBody.of(200, "게시글 삭제에 성공하였습니다."));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(400).body(BaseResponseBody.of(400, "게시글 삭제에 실패하였습니다."));
+        }
+    }
+>>>>>>> a31e39864eacd3c82fb610afd73cadd0da0e0d31
 }
