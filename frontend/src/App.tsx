@@ -8,6 +8,7 @@ import { Helmet } from "react-helmet-async";
 import LayoutSample from "features/setting/layout/LayoutSample";
 import PostList from "pages/PostListPage";
 import Header from "./components/Header";
+import WritePostPage from "pages/WritePostPage";
 
 function App() {
   return (
@@ -20,27 +21,27 @@ function App() {
           margin: "0 auto",
         }}
       >
-       
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Helmet>
-                <title>Prologue</title>
-              </Helmet>
-              <p>Main</p>
-            </>
-          }
-        />
-        <Route path="/sample" element={<SamplePage />} />
-        <Route path="/setting" element={<SettingPage />} />
-        <Route path="/layout" element={<SettingLayout />} />
-        <Route path="/laysample" element={<LayoutSample />} />
-        <Route path="/post" element={<PostList />} />
-      </Routes>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Helmet>
+                  <title>Prologue</title>
+                </Helmet>
+                <p>Main</p>
+              </>
+            }
+          />
+          <Route path="/sample" element={<SamplePage />} />
+          <Route path="/setting" element={<SettingPage />} />
+          <Route path="/layout" element={<SettingLayout />} />
+          <Route path="/laysample" element={<LayoutSample />} />
+          <Route path="/post" element={<PostList />} />
+          <Route path="/write" element={<WritePostPage />} />
+        </Routes>
+      </div>
     </div>
-  </div>
   );
 }
 
