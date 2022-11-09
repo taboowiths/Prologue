@@ -95,18 +95,7 @@ public class DashBoardServiceImpl implements DashBoardService {
             }
         }
 
-        System.out.println("정렬 전");
-        boardPostRequests.forEach(item -> System.out.println(item.getDate()));
-
-        Collections.sort(boardPostRequests, new Comparator());
-
-        System.out.println("오름차순 정렬");
-        boardPostRequests.forEach(item -> System.out.println(item.getDate()));
-
         Collections.sort(boardPostRequests, new Comparator().reversed());
-
-        System.out.println("내림차순 정렬");
-        boardPostRequests.forEach(item -> System.out.println(item.getDate()));
 
         return boardPostRequests;
     }
