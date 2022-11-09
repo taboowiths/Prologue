@@ -1,5 +1,6 @@
 package com.b208.prologue.api.service;
 
+import com.b208.prologue.api.request.DashBoardPostRequest;
 import com.b208.prologue.api.response.github.*;
 import com.b208.prologue.common.Base64Converter;
 import lombok.RequiredArgsConstructor;
@@ -19,14 +20,11 @@ public class DashBoardServiceImpl implements DashBoardService {
     private final PostServiceImpl postService;
 
     @Override
-    public Map<String, List<String>> getList(String encodedAccessToken, String githubId) throws Exception {
+    public List<DashBoardPostRequest> getList(String encodedAccessToken, String githubId) throws Exception {
         String accessToken = base64Converter.decryptAES256(encodedAccessToken);
 
-        Map<String, List<String>> result = new HashMap<>();
-        List<String> title = new ArrayList<>();
+        List<DashBoardPostRequest> boardPostRequests = new ArrayList<>();
         List<String> temp = new ArrayList<>();
-        List<String> date = new ArrayList<>();
-        List<String> directory = new ArrayList<>();
 
         String url = "/repos/" + githubId + "/" + githubId + ".github.io" + "/contents/";
 
@@ -39,11 +37,12 @@ public class DashBoardServiceImpl implements DashBoardService {
 
         for (int i = list.length - 1; i > list.length - 7; i--) {
             if (i < 0) break;
+            DashBoardPostRequest boardPostRequest = new DashBoardPostRequest();
 
             if(isNumeric(list[i].getName()) == false && list[i].getName().length() != 13) {
                 String post = postService.setItem(url, accessToken, list[i].getPath());
                 temp.add(post);
-                directory.add(list[i].getName());
+                boardPostRequest.setDirectory(list[i].getName());
 
                 StringTokenizer st = new StringTokenizer(post, "\n");
                 int cnt = st.countTokens();
@@ -59,7 +58,7 @@ public class DashBoardServiceImpl implements DashBoardService {
                         String[] tmp = tempDate.split("T");
                         tempDate = tmp[0];
 
-                        date.add(tempDate);
+                        boardPostRequest.setDate(tempDate);
                         break;
                     }
                 }
@@ -68,14 +67,15 @@ public class DashBoardServiceImpl implements DashBoardService {
                 }
             }else{
                 temp.add(postService.setItem(url, accessToken, list[i].getPath()));
-                directory.add(list[i].getName());
+                boardPostRequest.setDirectory(list[i].getName());
 
                 Date tempDate = new Date(Long.parseLong(list[i].getName()));
                 SimpleDateFormat dateFormat = new SimpleDateFormat ("yyyy-MM-dd");
 
-                date.add(String.valueOf(dateFormat.format(tempDate)));
+                boardPostRequest.setDate(String.valueOf(dateFormat.format(tempDate)));
             }
 
+            boardPostRequests.add(boardPostRequest);
         }
 
         for(int i = 0; i < temp.size(); i++){
@@ -85,19 +85,16 @@ public class DashBoardServiceImpl implements DashBoardService {
             for(int j = 0; j < cnt; j++){
                 String line = st.nextToken();
                 if(line.contains("title")){
-                    title.add(line.substring(line.indexOf(": ") + 1));
+                    boardPostRequests.get(i).setTitle(line.substring(line.indexOf(": ") + 1));
                     break;
                 }
                 if(j == (cnt-1)){
-                    title.add("No Title");
+                    boardPostRequests.get(i).setTitle("No Title");
                 }
             }
         }
 
-        result.put("title", title);
-        result.put("date", date);
-        result.put("directory", directory);
-        return result;
+        return boardPostRequests;
     }
 
     @Override
