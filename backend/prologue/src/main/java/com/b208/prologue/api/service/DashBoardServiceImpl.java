@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -94,7 +95,39 @@ public class DashBoardServiceImpl implements DashBoardService {
             }
         }
 
+        System.out.println("정렬 전");
+        boardPostRequests.forEach(item -> System.out.println(item.getDate()));
+
+        Collections.sort(boardPostRequests, new Comparator());
+
+        System.out.println("오름차순 정렬");
+        boardPostRequests.forEach(item -> System.out.println(item.getDate()));
+
+        Collections.sort(boardPostRequests, new Comparator().reversed());
+
+        System.out.println("내림차순 정렬");
+        boardPostRequests.forEach(item -> System.out.println(item.getDate()));
+
         return boardPostRequests;
+    }
+
+    public class Comparator implements java.util.Comparator<DashBoardPostRequest> {
+        @Override
+        public int compare(DashBoardPostRequest val1, DashBoardPostRequest val2) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+            Date date1 = null;
+            Date date2 = null;
+            try {
+                date1 = sdf.parse(val1.getDate());
+                date2 = sdf.parse(val2.getDate());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            return Long.valueOf(date1.getTime())
+                    .compareTo(date2.getTime());
+        }
     }
 
     @Override
