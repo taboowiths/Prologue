@@ -2,13 +2,48 @@ import React, { useEffect, useRef, useState } from "react";
 import { Editor } from "@toast-ui/react-editor";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import axios from "api/MultipartAxios";
+import Axios from "api/JsonAxios";
 import api from "api/Api";
+import { useSelector } from "react-redux";
+import { rootState } from "app/store";
 
 const PostImageTest = () => {
+  const { accessToken, githubId } = useSelector((state: rootState) => state.auth);
+
   const [showImages, setShowImages] = useState([]);
   const [fileList, setFileList] = useState([]);
 
   const editorRef = useRef<Editor>();
+
+  useEffect(() => {
+    axios
+      .get(api.posts.getPostDetail(accessToken, githubId, "1668022794089"))
+      .then((res) => {
+        console.log(res.data.content);
+        const markdown = res.data.content;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+
+  const deletePost = () => {
+    const formData = new FormData();
+
+    const deletePostRequest = {
+      accessToken: accessToken,
+      githubId: githubId,
+      directory: "1667896802872",
+    };
+
+    formData.append("deletePostRequest", new Blob([JSON.stringify(deletePostRequest)], { type: "application/json" }));
+
+    // axios.delete(api.posts.deletePost(), {
+    //   accessToken: accessToken,
+    //   githubId: githubId,
+    //   directory: "1667896802872",
+    // });
+  };
 
   const handleAddImages = (e: React.ChangeEvent<HTMLInputElement>) => {
     const uploadFile = Array.from(e.target.files);
@@ -79,6 +114,7 @@ const PostImageTest = () => {
       ))}
 
       <button onClick={testModify}>글 수정하기</button>
+      <button onClick={deletePost}>게시글 삭제</button>
 
       <Editor
         ref={editorRef}
