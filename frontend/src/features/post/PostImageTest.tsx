@@ -38,11 +38,13 @@ const PostImageTest = () => {
 
     formData.append("deletePostRequest", new Blob([JSON.stringify(deletePostRequest)], { type: "application/json" }));
 
-    // axios.delete(api.posts.deletePost(), {
-    //   accessToken: accessToken,
-    //   githubId: githubId,
-    //   directory: "1667896802872",
-    // });
+    Axios.delete(api.posts.deletePost(), {
+      data: {
+        accessToken: accessToken,
+        githubId: githubId,
+        directory: "1668021354758",
+      },
+    });
   };
 
   const handleAddImages = (e: React.ChangeEvent<HTMLInputElement>) => {
